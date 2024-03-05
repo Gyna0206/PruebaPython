@@ -51,8 +51,8 @@ flask run
 ```
 
 
-2. Accede a las rutas indicadas en la documentación y disfrute la app: 
-```
+2. Accede a las rutas indicadas en la documentación y disfrute la API: 
+
 https://documenter.getpostman.com/view/28337602/2sA2xe4EBq#36b2799e-cb75-4e6c-923e-ce731ab50760
 
 
