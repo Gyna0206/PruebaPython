@@ -1,0 +1,13 @@
+{% extends "base_template.html" %}
+
+{% block title %}{{ booking.user_name }}{% endblock %}
+
+{% block content %}
+    <h1>Reserva</h1>
+    <li>Tour reservado: {{booking.tour_name}}
+    <li>Fecha de reserva:{{ booking.datecreated.strftime('%d-%m-%Y')}}
+    <li>Cantidad de personas:{{booking.people}}
+        <form action="{{ url_for('bookings.delete_booking', booking_id=booking.id) }}" method="post" novalidate>
+            <input type="submit" value="Cancelar Reserva" />
+        </form>
+{% endblock%}

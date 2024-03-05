@@ -1,0 +1,17 @@
+{% extends "base_template.html" %}
+
+{% block title %}TOURS{% endblock %}
+
+{% block content %}
+<div class="tour-list">
+    <h2>Explora nuestros tours</h2>
+    <ul>
+        {% for tour in tours %}
+        <li><a href="{{ url_for('tour.show_tour', slug=tour.name_slug) }}">{{ tour.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="booking-link">
+    <a class="btn" href="{{ url_for('bookings.show_bookings') }}">Ver reservas</a>
+</div>
+{% endblock %}

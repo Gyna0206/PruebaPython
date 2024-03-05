@@ -1,0 +1,15 @@
+{% extends "base_template.html" %}
+
+{% block title %}{{ user_name }}{% endblock %}
+{% block content %}
+Reservas:
+<div id="bookings">
+    {% if bookings %}
+        {% for booking in bookings %}
+        <a href="{{ url_for('bookings.show_booking', booking_id=booking.id) }}">{{ booking.tour_name}}</a>
+        {% endfor %}
+    {% else %}
+    <p>No tiene reservas disponibles.</p>
+{% endif %}
+</div>
+{%endblock%}

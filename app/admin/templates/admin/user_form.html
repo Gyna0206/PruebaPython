@@ -1,0 +1,42 @@
+{% extends "base_template.html" %}
+
+{% block title %}
+    {{ user.name }}
+{% endblock %}
+
+{% block content %}
+    <h2>Detalle del usuario</h2>
+    <div>
+    Nombre: {{ user.name }}
+    </div>
+    <div>
+    Email: {{ user.email }}
+    </div>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.is_admin.label }}
+            {{ form.is_admin }}<br>
+            {% for error in form.is_admin.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+    <form action="{{ url_for('admin.delete_user', user_id=user.id) }}" method="post" novalidate>
+        <input type="submit" value="Eliminar Usuario" />
+    </form>
+    Reservas:
+    <div id="bookings">
+        {% if user.bookings %}
+            {% for booking in user.bookings %}
+            <a href="{{ url_for('bookings.show_booking', booking_id=booking.id) }}">{{ booking.tour_name}}</a>
+            {% endfor %}
+        {% else %}
+        <p>Este usuario no tiene reservas disponibles.</p>
+    {% endif %}
+</div>
+    </div>
+{% endblock %}
